@@ -1,6 +1,278 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
+html{
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/images/site/checkerboard.jpg");
+  background-size: cover;
+}
+ 
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Share Tech', sans-serif;
+  font-size: 1.5em;
+  height: 75%;
+  width: 75%;
+  border: 3px solid black;
+  background-color: white;
+}
+
+
+/* header design */
+
+#top-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navigation design */
+
+nav{
+  border: 3px solid black;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+nav ul{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+}
+
+nav ul li {
+  padding: 20px;
+}
+
+nav ul li:hover {
+  background-color: gray;
+  color: white;
+}
+
+/* hero image and own today design */
+
+.DMC{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delorean_list{
+  background-color: rgba(245, 245, 245, 0.5);
+  margin-left: -25%;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Section 2 headers */
+
+.section2_headers{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Section 2 design */
+
+.section2{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Delorean Upgrades Design */
+
+.Delorean_Upgrades ul{
+  display: grid;
+  grid-template-columns: repeat 2(1fr);
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Positioning each upgrade */
+.Delorean_Upgrades ul li:nth-child(1){
+  grid-column: 1;
+  grid-row: 1;
+}
+.Delorean_Upgrades ul li:nth-child(2){
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.Delorean_Upgrades ul li:nth-child(3){
+  grid-column: 1;
+  grid-row: 2;
+}
+.Delorean_Upgrades ul li:nth-child(4){
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* -------------------  */
+
+.Delorean_Upgrades ul img{
+  width: 100px;
+  height: 100px;
+}
+.Delorean_Upgrades ul a{
+  width: 100%;
+  font-size: 1rem;
+}
+
+.Delorean_Upgrades ul li{
+  list-style-type: none;
+  padding: 5px;
+}
+
+.Delorean_Upgrades .image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+}
+
+/* *************************************************************************** */
+
+@media screen and (max-width: 768px) {
+
+  html{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/images/site/small_check.jpg");
+    background-size: cover;
+  }
+   
+  *, *:before, *:after{
+    box-sizing: inherit;
+  }
+  
+  body {
+    font-size: 1rem;
+    border: 1px solid black;
+    background-color: white;
+  }
+  
+  
+  /* header design */
+  
+  #top-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  /* Navigation design */
+  
+  
+  nav ul li {
+    padding: 0px;
+  }
+  
+  nav ul li:hover {
+    background-color: gray;
+    color: white;
+  }
+  
+  /* hero image and own today design */
+
+  .h1 {
+    width: 100%;
+  }
+  
+  .DMC{
+    display: block;
+  }
+  
+  .delorean_list{
+    background-color: rgba(245, 245, 245, 0.5);
+    margin-left: 0;
+    position: relative;
+    text-align: center;
+    list-style-type: none;
+    margin-bottom: 5%;
+  }
+
+  .hero_image img{
+    width: 100%;
+  }
+  
+  /* Section 2 headers */
+  
+  .section2_headers{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  /* Section 2 design */
+  
+  .section2{
+    display: block;
+  }
+  
+  /* Delorean Upgrades Design */
+  
+  .Delorean_Upgrades ul{
+    display: grid;
+    grid-template-columns: repeat 2(1fr);
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Positioning each upgrade */
+  .Delorean_Upgrades ul li:nth-child(1){
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .Delorean_Upgrades ul li:nth-child(2){
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .Delorean_Upgrades ul li:nth-child(3){
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .Delorean_Upgrades ul li:nth-child(4){
+    grid-column: 2;
+    grid-row: 2;
+  }
+  
+  /* -------------------  */
+  
+  .Delorean_Upgrades ul img{
+    width: 100px;
+    height: 100px;
+  }
+  .Delorean_Upgrades ul a{
+    width: 100%;
+    font-size: 1rem;
+  }
+  
+  .Delorean_Upgrades ul li{
+    list-style-type: none;
+    padding: 5px;
+  }
+  
+  .Delorean_Upgrades .image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+  }
+
 }
