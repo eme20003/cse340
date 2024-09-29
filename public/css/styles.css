@@ -92,9 +92,9 @@ nav ul li:hover {
 
 /* Delorean Upgrades Design */
 
-.Delorean_Upgrades ul{
+.Delorean_Upgrades ul {
   display: grid;
-  grid-template-columns: repeat 2(1fr);
+  grid-template-columns: repeat(2, 1fr); /* Corrected syntax here */
   gap: 20px;
   list-style-type: none;
   padding: 0;
@@ -225,13 +225,13 @@ nav ul li:hover {
   
   /* Delorean Upgrades Design */
   
-  .Delorean_Upgrades ul{
+  .Delorean_Upgrades ul {
     display: grid;
-    grid-template-columns: repeat 2(1fr);
+    grid-template-columns: repeat(2, 1fr); /* Corrected syntax here */
     gap: 20px;
     list-style-type: none;
     padding: 0;
-  }
+}
   
   /* Positioning each upgrade */
   .Delorean_Upgrades ul li:nth-child(1){
