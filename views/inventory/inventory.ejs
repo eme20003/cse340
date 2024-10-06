@@ -1,0 +1,8 @@
+<% if (title) { %>
+    <h1 class="inventoryItemHeader"><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+
+    <%# messages() %>
+    <%- grid %>
