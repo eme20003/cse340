@@ -1,0 +1,13 @@
+<h1><%- title%></h1>
+<form action="/account/register" method="post">
+    <label for="account_firstname">First Name: </label><br>
+    <input type="text" id="fName" name="account_firstname"><br>
+    <label for="account_lastname">Last Name: </label><br>
+    <input type="text" id="lname" name="account_lastname"><br>
+    <label for="account_email">Email Address: </label><br>
+    <input type="text" id="email" name="account_email"><br>
+    <label for="account_password">Password: </label>
+    <input type="text" id="password" name="account_password">
+    <input type="submit" value="Submit">
+</form>
+<p>Already have an account? <a href="/account/login">Login</a></p>
