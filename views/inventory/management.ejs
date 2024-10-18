@@ -1,9 +1,9 @@
 <% if (title) { %>
     <h1><%= title %></h1>
+    <p><a href="../../inv/add-classification/">Add New Classification</a></p>
+    <p><a href="../../inv/add-inventory/">Add New Inventory</a></p>
     <% } else {
       res.redirect('/')
     } %>
 
     <%# messages() %>
-
-    <%- grid %>

@@ -37,12 +37,10 @@ invCont.buildByInvId = async function (req, res, next) {
 ************************** */
 
 invCont.buildInvManagement = async function (req, res, next){
-  const grid = await utilities.buildInvManagement()
   let nav = await utilities.getNav()
   res.render("./inventory/management", {
-    title: "Test",
+    title: "Management View",
     nav,
-    grid,
   })
 }
 
@@ -55,6 +53,21 @@ invCont.buildByClassification = async function (req, res, next){
   res.render("./inventory/add-classification",{
     title: "Add Classification",
     nav,
+    errors: null
+  })
+}
+
+/* *******************************
+* Build Add Inventory View
+**************************** */
+
+invCont.buildByAddInventory = async function (req, res, next){
+  let nav = await utilities.getNav()
+  let inventoryClassificationList = utilities.buildClassificationList()
+  res.render("./inventory/add-inventory", {
+    title: "Add Inventory",
+    nav,
+    inventoryClassificationList,
     errors: null
   })
 }
@@ -76,7 +89,7 @@ invCont.registerClassification = async function (req, res) {
       `Congratulations, you registered ${classification_name}. Please re-load your page to ensure the changes have been made`
     )
     res.status(201).render("inventory/management", {
-      title: "Login",
+      title: "Management View",
       nav,
     })
   } else {
@@ -87,4 +100,35 @@ invCont.registerClassification = async function (req, res) {
     })
   }
 }
+
+/* ************************
+* Process inventory Registration
+****************** */
+
+invCont.registerInventory = async function (req, res) {
+  let nav = await utilities.getNav()
+  const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body
+
+  const regResult = await invModel.registerInventory(
+    inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
+  )
+
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you registered ${inv_make}. Please re-load your page to ensure the changes have been made correctly`
+    )
+    res.status(201).render("inventory/management", {
+      title: "Management View",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+    })
+  }
+}
+
 module.exports = invCont
