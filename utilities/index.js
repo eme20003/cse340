@@ -106,6 +106,27 @@ Util.buildClassificationGrid = async function(data){
     return grid
   }
 
+  Util.buildInvManagement = async function () {
+    let grid
+    grid = '<p><a href="../../inv/add-classification/">Add New Classification</a></p>'
+    grid += '<p><a href="../../inv/add-inventory/">Add New Inventory</a></p>'
+
+    return grid
+  }
+
+  Util.buildAddClassification = async function () {
+      let grid
+
+      grid = '<div class ="formWrapper">'
+      grid += '<form>'
+      grid += '<label for="classification_name">Classification Name: </label><br>'
+      grid += '<input type="text" id="classification_name" name="classification_name"<br>'
+      grid += '<input type="submit" value="Submit">'
+      grid += '</form>'
+      grid += '</div>'
+
+    return grid
+  }
 
   /* *****************************************
   * Middleware For Handling Errors

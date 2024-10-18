@@ -46,4 +46,15 @@ async function getInventoryItem(inv_id){
   }
 }
 
-  module.exports = {getClassifications, getInventoryByClassificationId, getInventoryItem};
+async function registerClassification(classification_name){
+  try{
+    const sql =
+      `INSERT INTO classification (classification_name)
+      VALUES ($1) RETURNING *`
+      return await pool.query(sql, [classification_name])
+  }catch (error) { // use "error" instead of "err"
+    console.error('Error message: ', error.message); // "error.message" should be used here
+    throw error; // rethrow the correct error object
+  }
+}
+  module.exports = {getClassifications, getInventoryByClassificationId, getInventoryItem, registerClassification};

@@ -32,4 +32,59 @@ invCont.buildByInvId = async function (req, res, next) {
   })
 }
 
+/* ************************************
+* Build inv management view
+************************** */
+
+invCont.buildInvManagement = async function (req, res, next){
+  const grid = await utilities.buildInvManagement()
+  let nav = await utilities.getNav()
+  res.render("./inventory/management", {
+    title: "Test",
+    nav,
+    grid,
+  })
+}
+
+/* ****************************
+* Build Add Classification View
+********************************* */
+
+invCont.buildByClassification = async function (req, res, next){
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-classification",{
+    title: "Add Classification",
+    nav,
+    errors: null
+  })
+}
+
+/* ****************************************
+*  Process Registration
+* *************************************** */
+invCont.registerClassification = async function (req, res) {
+  let nav = await utilities.getNav()
+  const { classification_name } = req.body
+
+  const regResult = await invModel.registerClassification(
+    classification_name
+  )
+
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you registered ${classification_name}. Please re-load your page to ensure the changes have been made`
+    )
+    res.status(201).render("inventory/management", {
+      title: "Login",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+    })
+  }
+}
 module.exports = invCont

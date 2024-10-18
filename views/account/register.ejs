@@ -1,13 +1,21 @@
 <h1><%- title%></h1>
 <form action="/account/register" method="post">
     <label for="account_firstname">First Name: </label><br>
-    <input type="text" id="fName" name="account_firstname"><br>
+    <input type="text" id="fName" name="account_firstname" required><br>
     <label for="account_lastname">Last Name: </label><br>
-    <input type="text" id="lname" name="account_lastname"><br>
+    <input type="text" id="lname" name="account_lastname" required><br>
     <label for="account_email">Email Address: </label><br>
-    <input type="text" id="email" name="account_email"><br>
+    <input type="text" id="email" name="account_email" required><br>
     <label for="account_password">Password: </label>
-    <input type="text" id="password" name="account_password">
+    <input type="password" id="password" name="account_password" required pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+    <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter, and 1 special character</span>
     <input type="submit" value="Submit">
 </form>
+<% if (errors)  { %>
+    <ul class="notice">
+        <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+    <% } %>
 <p>Already have an account? <a href="/account/login">Login</a></p>

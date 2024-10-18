@@ -1,0 +1,13 @@
+  <h1><%- title%></h1>
+  <form action="/inv/add-classification" method="post">
+      <label for="classification_name">Classification Name: </label><br>
+      <input type="text" id="classification_name" name="classification_name" required><br>
+      <input type="submit" value="Submit">
+  </form>
+  <% if (errors)  { %>
+      <ul class="notice">
+          <% errors.array().forEach(error => { %>
+              <li><%= error.msg %></li>
+          <% }) %>
+      </ul>
+      <% } %>
