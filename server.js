@@ -18,6 +18,7 @@ const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const inventoryController = require("./controllers/invController")
+const cookieParser = require("cookie-parser")
 
 
 /* ***********************
@@ -51,7 +52,8 @@ app.use(function(req, res, next){
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-
+app.use(utilities.checkJWTToken)
+app.use(cookieParser())
 
 /* ***********************
  * Routes
@@ -61,6 +63,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 app.get("/test", utilities.handleErrors(baseController.buildSecondHome))
 app.use("/account", require("./routes/accountRoute"))
+
 
 
 // File Not Found Route - Must be last route in list
