@@ -4,13 +4,14 @@ const router = new express.Router()
 const util = require("../utilities")
 const accController = require("../controllers/accountController");
 const regValidate = require('../utilities/account-validation')
-const invController = require('../controllers/invController');
 const invCont = require("../controllers/invController");
+const jsFile = require("../public/js/inventory")
 
 router.get("/login", util.handleErrors(accController.buildLogin))
 router.get("/register", util.handleErrors(accController.buildRegister))
 router.get("/account", util.handleErrors(accController.buildAccountLogin))
 router.get("/", util.checkLogin, util.handleErrors(invCont.buildInvManagement))
+router.get("/inv/getInventory/:classification_id", util.handleErrors(invCont.getInventoryJSON))
 
 //post method
 router.post('/register', 

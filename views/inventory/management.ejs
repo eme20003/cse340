@@ -2,8 +2,14 @@
     <h1><%= title %></h1>
     <p><a href="../../inv/add-classification/">Add New Classification</a></p>
     <p><a href="../../inv/add-inventory/">Add New Inventory</a></p>
+    <tableid="inventoryDisplay"></table>
+    <noscript>JavaScript must be enabled to use this page.</noscript>
     <% } else {
       res.redirect('/')
     } %>
 
+    <script src="../../js/inventory.js"></script>
+    <script src="../../js/inv-update.js"></script>
     <%# messages() %>
+
+    

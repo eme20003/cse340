@@ -36,5 +36,8 @@ router.post('/add-inventory',
     util.handleErrors(invController.registerInventory)
 )
 
+//post method for update
+router.post("/update/", invController.updateInventory)
+
 
 module.exports = router;
