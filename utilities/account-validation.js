@@ -9,7 +9,7 @@ const utilities = require(".")
     validate.registrationRules = () => {
         return [
             //firstname is required and must be string
-            body("acocunt_firstname")
+            body("account_firstname")
             .trim()
             .escape()
             .notEmpty()

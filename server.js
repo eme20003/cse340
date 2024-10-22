@@ -27,6 +27,8 @@ const cookieParser = require("cookie-parser")
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") //not at view root
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 
 /* *************************************
  * Middleware
@@ -52,8 +54,7 @@ app.use(function(req, res, next){
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(utilities.checkJWTToken)
-app.use(cookieParser())
+
 
 /* ***********************
  * Routes

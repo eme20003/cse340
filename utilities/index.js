@@ -155,11 +155,25 @@ Util.buildClassificationGrid = async function(data){
           res.clearCookie("jwt")
           return res.redirect("/account/login")
         }
-        res.locals.accountData = accountDatares.locals.loggedin = 1
+        res.locals.accountData = accountData
+        res.locals.loggedin = 1
         next()
       })
   } else {
     next()
+  }
+ }
+
+ /* ************************************
+ * Check Login
+ ************************************ */
+
+ Util.checkLogin = (req, res, next) => {
+  if(res.locals.loggedin){
+    next()
+  }else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
   }
  }
 
