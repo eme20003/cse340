@@ -1,0 +1,16 @@
+<h1><%- title%></h1>
+<form action="/review/add-review" method="post">
+    <label for="review_car">Car: </label><br>
+    <input type="text" id="review_car" name="review_car" required><br>
+
+    <label for="review_rating">Rating: </label><br>
+    <input type="number" id="review_rating" name="review_rating" required><br>
+
+    <label for="review_name">Your Name: </label><br>
+    <input type="text" id="review_name" name="review_name" required><br>
+
+    <label for="review_description">Description: </label><br>
+    <input type="text" id="inv_description" name="inv_description" required><br>
+
+    <input type="submit" value="Submit">
+</form>

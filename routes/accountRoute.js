@@ -5,9 +5,8 @@ const util = require("../utilities")
 const accController = require("../controllers/accountController");
 const regValidate = require('../utilities/account-validation')
 const invCont = require("../controllers/invController");
-const jsFile = require("../public/js/inventory")
 
-router.get("/login", util.handleErrors(accController.buildLogin))
+router.get("/login", util.handleErrors(accController.buildAccountLogin))
 router.get("/register", util.handleErrors(accController.buildRegister))
 router.get("/account", util.handleErrors(accController.buildAccountLogin))
 router.get("/", util.checkLogin, util.handleErrors(invCont.buildInvManagement))
@@ -23,7 +22,7 @@ router.post('/register',
 //Process login request
 router.post(
     "/login",
-    accController.accountLogin,
+    util.handleErrors(accController.accountLogin),
     regValidate.checkLoginData,
     util.handleErrors(accController.accountLogin)
 )

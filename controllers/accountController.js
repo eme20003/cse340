@@ -26,9 +26,9 @@ async function buildRegister(req, res, next){
 
 async function buildAccountLogin(req, res, next){
   let nav = await utilities.getNav()
-  res.render("/account", {
-    title: "You're logged in!",
-    nav,  
+  res.render("account/account", {
+    title: "Management View",
+    nav,
   })
 }
 

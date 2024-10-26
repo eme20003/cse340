@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const reviewModel = require("../models/review-model")
 const Util = {}
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
@@ -176,6 +177,25 @@ Util.buildClassificationGrid = async function(data){
     return res.redirect("/account/login")
   }
  }
+
+ /* Add review */
+
+ Util.buildReviewHome = async function (req, res, next) {
+  let data = await reviewModel.getReviewsById()
+
+  let grid
+    data.rows.forEach(item => {
+      grid = '<div>'
+      grid += '<ul>'
+      grid += '<li>'
+      grid += '<p>' + 'Car: ' + item.review_car + ', Rating: ' + item.review_rating + ', Review: ' + item.review_description + '</p>'
+      grid += '<p>review by:'+ item.review_name + '</p>'
+      grid += '</li>'
+      grid += '</ul>'
+      grid += '</div>'
+    })
+  return grid
+}
 
   /* *****************************************
   * Middleware For Handling Errors

@@ -12,12 +12,11 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const reviewRoute = require("./routes/reviewRoute")
 const utilities = require("./utilities")
 const session = require("express-session")
 const pool = require('./database/')
-const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
-const inventoryController = require("./controllers/invController")
 const cookieParser = require("cookie-parser")
 
 
@@ -64,6 +63,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 app.get("/test", utilities.handleErrors(baseController.buildSecondHome))
 app.use("/account", require("./routes/accountRoute"))
+app.use("/review", reviewRoute)
 
 
 
